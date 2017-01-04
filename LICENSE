@@ -21,7 +21,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 This software was based on Flaskr
-https://github.com/pallets/flask/blob/0.10-maintenance/examples/flaskr/flaskr.py,
+https://github.com/pallets/flask/blob/0.10-maintenance/examples/flaskr,
 licensed as below.
 ----------------------------------------------------------------
 Copyright (c) 2013 by Armin Ronacher and contributors.  
