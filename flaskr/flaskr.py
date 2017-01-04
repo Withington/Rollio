@@ -1,3 +1,12 @@
+# Copyright (c) 2016 Withington
+# Copyright (c) 2013 by Armin Ronacher and contributors.  
+
+# This software is licensed under MIT.
+
+# This file was based on 
+# https://github.com/pallets/flask/blob/0.10-maintenance/examples/flaskr,
+# see license file for details.
+
 
 # all the imports
 import sqlite3
@@ -74,6 +83,8 @@ def logout():
 
 if __name__ == '__main__':
     # To initialise the db, first create an empty flaskr.db file at 
-    # /tmp/flaskr.db. Then run with the init_db() line below commented in.
+    # /tmp/flaskr.db. From cmd line you can do this at flaskr\tmp> by running
+    # aaaa > flaskr.db
+    # Then run with the init_db() line below commented in.
     #init_db() # Only run this the first time, to initialise the db. It creates a new, empty db.
     app.run()

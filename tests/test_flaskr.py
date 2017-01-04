@@ -1,3 +1,12 @@
+# Copyright (c) 2016 Withington
+# Copyright (c) 2013 by Armin Ronacher and contributors.  
+
+# This software is licensed under MIT.
+
+# This file was based on 
+# https://github.com/pallets/flask/blob/0.10-maintenance/examples/flaskr,
+# see license file for details.
+
 # -*- coding: utf-8 -*-
 """
     Flaskr Tests
