@@ -14,6 +14,9 @@ from flask import Flask, request, session, g, redirect, url_for, \
      abort, render_template, flash
 from contextlib import closing
 
+import data_manipulation
+from data_manipulation import sayhello
+
 # configuration
 #DATABASE = '/tmp/flaskr.db' # for non-Windows
 DATABASE = '.\\tmp\\flaskr.db' # for Windows
