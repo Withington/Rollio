@@ -5,4 +5,4 @@ python:
 #install: "pip install -r requirements.txt"
 install: "pip install flask"
 # command to run tests
-script: python test_flaskr.py
+script: python flaskr/test_flaskr.py
