@@ -1,0 +1,15 @@
+language: python
+python:
+  - "2.7"
+# command to install dependencies
+install: 
+#  - pip install -r requirements.txt
+  - pip install flask
+  - pip install coveralls
+# command to run coveralls (test coverage) and run tests
+script: 
+  - coverage run --source=flaskr flaskr/test_flaskr.py
+#  - python flaskr/test_flaskr.py
+after_success:
+  coveralls
+
