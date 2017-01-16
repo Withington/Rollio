@@ -2,6 +2,7 @@ import os
 import flaskr
 import unittest
 import tempfile
+from scipy.stats import chisquare
 
 class FlaskrTestCase(unittest.TestCase):
 
