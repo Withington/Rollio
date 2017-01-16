@@ -15,12 +15,12 @@ from flask import Flask, request, session, g, redirect, url_for, \
 from contextlib import closing
 
 import data_manipulation
-from data_manipulation import sayhello
+from data_manipulation import getText
 
 # configuration
 #DATABASE = '/tmp/flaskr.db' # for non-Windows
 DATABASE = '.\\tmp\\flaskr.db' # for Windows
-DEBUG = True
+DEBUG = True # Disable this line if you want to debug using Visual Studio. 
 SECRET_KEY = 'development key'
 USERNAME = 'admin'
 PASSWORD = 'default'

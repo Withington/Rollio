@@ -1,4 +1,4 @@
 import sqlite3
 
-def sayhello():
-    return "hello"
+def getText():
+    return "System generated text."
