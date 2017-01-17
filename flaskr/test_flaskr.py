@@ -1,3 +1,6 @@
+global RUN_MONGO_TEST
+RUN_MONGO_TEST=False
+
 import os
 import flaskr
 import unittest
@@ -6,7 +9,9 @@ import tempfile
 import pymongo
 from pymongo import MongoClient
 
+import varnorm
 from varnorm.varcharkey import VarCharKey
+
 
 
 class FlaskrTestCase(unittest.TestCase):
@@ -56,12 +61,15 @@ class FlaskrTestCase(unittest.TestCase):
         assert '<strong>HTML</strong> allowed here' in rv.data
 
     def test_mongo(self):
-        print "Running test_mongo"
-        client = MongoClient()  
-        db = client.test_database
-        collection = db.test_collection
-        post = {"author": "Jo","text": "First entry by Jo."}
-        collection.insert_one(post)
+        if RUN_MONGO_TEST:
+            print "Running test_mongo"
+            client = MongoClient()  
+            db = client.test_database
+            collection = db.test_collection
+            post = {"author": "Jo","text": "First entry by Jo."}
+            collection.insert_one(post)
+        else:
+            print "NOT running test_mongo"  
 
 
 if __name__ == '__main__':
