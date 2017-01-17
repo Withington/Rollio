@@ -9,6 +9,7 @@ import tempfile
 import pymongo
 from pymongo import MongoClient
 
+import varnorm
 from varnorm.varcharkey import VarCharKey
 
 
