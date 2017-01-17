@@ -1,16 +1,19 @@
 language: python
 python:
   - "2.7"
-# command to install dependencies
+git:
+  submodules: false
+before_install:
+  - git submodule update --init --remote --recursive
 install: 
 #  - pip install -r requirements.txt
   - pip install flask
   - pip install pymongo
   - pip install coveralls
-# command to run coveralls (test coverage) and run tests
 services:
   - mongodb
 script: 
+# command to run coveralls (test coverage) and run tests
   - coverage run --source=flaskr flaskr/test_flaskr.py
 #  - python flaskr/test_flaskr.py
 after_success:
