@@ -5,10 +5,10 @@ git:
   submodules: false
 before_install:
   - git submodule update --init --remote --recursive
+install: 
   - cd varnorm
   - python setup.py install --user
- - cd ..
-install: 
+  - cd ..
 #  - pip install -r requirements.txt
   - pip install flask
   - pip install pymongo
