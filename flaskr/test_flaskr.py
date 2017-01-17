@@ -3,6 +3,9 @@ import flaskr
 import unittest
 import tempfile
 
+import pymongo
+from pymongo import MongoClient
+
 class FlaskrTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -14,6 +17,7 @@ class FlaskrTestCase(unittest.TestCase):
     def tearDown(self):
         os.close(self.db_fd)
         os.unlink(flaskr.app.config['DATABASE'])
+        
 
     def test_empty_db(self):
         rv = self.app.get('/')
@@ -47,6 +51,15 @@ class FlaskrTestCase(unittest.TestCase):
         assert 'No entries here so far' not in rv.data
         assert '&lt;Hello&gt;' in rv.data
         assert '<strong>HTML</strong> allowed here' in rv.data
+
+    def test_mongo(self):
+        print "Running test_mongo"
+        client = MongoClient()  
+        db = client.test_database
+        collection = db.test_collection
+        post = {"author": "Jo","text": "First entry by Jo."}
+        collection.insert_one(post)
+
 
 if __name__ == '__main__':
     unittest.main()
