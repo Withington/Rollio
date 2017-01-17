@@ -6,6 +6,9 @@ import tempfile
 import pymongo
 from pymongo import MongoClient
 
+from varnorm.varcharkey import VarCharKey
+
+
 class FlaskrTestCase(unittest.TestCase):
 
     def setUp(self):
