@@ -1,5 +1,5 @@
 global RUN_MONGO_TEST
-RUN_MONGO_TEST=False
+RUN_MONGO_TEST=True
 
 import os
 import flaskr
@@ -9,7 +9,6 @@ import tempfile
 import pymongo
 from pymongo import MongoClient
 
-import varnorm
 from varnorm.varcharkey import VarCharKey
 
 
