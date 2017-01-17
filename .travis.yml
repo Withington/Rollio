@@ -5,6 +5,7 @@ python:
 install: 
 #  - pip install -r requirements.txt
   - pip install flask
+  - pip install pymongo
   - pip install coveralls
 # command to run coveralls (test coverage) and run tests
 services:
