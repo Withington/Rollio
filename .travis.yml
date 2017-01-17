@@ -9,9 +9,10 @@ install:
   - cd varnorm
   - python setup.py install
   - cd ..
-  - pip install -r requirements.txt
-#  - pip install flask
-#  - pip install pymongo
+#  - pip install -r requirements.txt
+  - pip install flask
+  - pip install pymongo
+  - pip install pygr
   - pip install coveralls
 services:
   - mongodb
