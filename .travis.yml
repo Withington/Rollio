@@ -5,7 +5,9 @@ git:
   submodules: false
 before_install:
   - git submodule update --init --remote --recursive
-  - python varnorm/setup.py install
+  - cd varnorm
+  - python setup.py install --user
+  - cd ..
 install: 
 #  - pip install -r requirements.txt
   - pip install flask
