@@ -5,9 +5,9 @@ git:
   submodules: false
 before_install:
   - git submodule update --init --remote --recursive
+  - python varnorm/setup.py install
 install: 
 #  - pip install -r requirements.txt
-  - pip install varnorm
   - pip install flask
   - pip install pymongo
   - pip install coveralls
