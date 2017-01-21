@@ -18,7 +18,9 @@ services:
   - mongodb
 script: 
 # command to run coveralls (test coverage) and run tests
-  - coverage run --source=flaskr flaskr/test_flaskr.py
+#  - coverage run --source=flaskr flaskr/test_flaskr.py
+  - coverage run --source=flaskr -m unittest discover 
+#  - python -m unittest discover
 #  - python flaskr/test_flaskr.py
 after_success:
   coveralls
