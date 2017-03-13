@@ -4,7 +4,7 @@ python:
 git:
   submodules: false
 before_install:
-  - git submodule update --init --remote --recursive
+  - git submodule update --init --recursive
 install: 
   - cd varnorm
   - python setup.py install
