@@ -26,4 +26,4 @@ after_success:
   coveralls
 
 notifications:
-  travis encrypt "rpfb:MmlTuZjFJMyZ8FlLvzaPL2El" --add notifications.slack
+  slack: rpfb:MmlTuZjFJMyZ8FlLvzaPL2El
