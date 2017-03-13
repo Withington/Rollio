@@ -4,20 +4,27 @@ python:
 git:
   submodules: false
 before_install:
-- git submodule update --init --remote --recursive
-install:
-- cd varnorm
-- python setup.py install
-- cd ..
-- pip install flask
-- pip install pymongo
-- pip install pygr
-- pip install coveralls
+  - git submodule update --init --recursive
+install: 
+  - cd varnorm
+  - python setup.py install
+  - cd ..
+#  - pip install -r requirements.txt
+  - pip install flask
+  - pip install pymongo
+  - pip install pygr
+  - pip install coveralls
 services:
-- mongodb
-script:
-- coverage run --source=flaskr -m unittest discover
-after_success: coveralls
+  - mongodb
+script: 
+# command to run coveralls (test coverage) and run tests
+#  - coverage run --source=flaskr flaskr/test_flaskr.py
+  - coverage run --source=flaskr -m unittest discover 
+#  - python -m unittest discover
+#  - python flaskr/test_flaskr.py
+after_success:
+  coveralls
+
 notifications:
   slack:
     secure: f0yjG1djoiTNaohS68+CobYeDmGEJ6jmCHezt7YAReIzkcyb2iJ1/84AAlVoJppuWW9MmeIhgI+fw9rteVX7PHtafSrDdl70ib8Lq04LXUA8mwaP8jxzQKgDv4IfoPtkklrbKSyhq3H77It/N025rsIwq/jWQuZDeoTchmHuj/OslMa7Zi42QysIs1hyHQ3OlNi6ObVddvD3EKpfUnAE8VzDfpgL2/7aMpEyR7+a0SSczmw0/VGAH4c6L61IRMdxB+4xN1xs2TvCM/UvF9vVJnlXwZFLgCsBvqgPnBiVJoBug7wgWgjeNUV/lHImAWtBszzlS7JRW1hyKyCNCkU0y73iHljDNfpktTNSzOnNtAW+fKL5aYjr99tRJbiQZmZdAOOt7oSyQaj6TyPf0xF+4ZR6CieGS+lMP9zejS4gzAqkEBPWYiPv+9usa3Q24nc7Xbzng2oZ8Uo3fja5wK5XtkueoAB/CIrikjEAa5eJS98vNxQ553dPIGNevb7o8Q9yDCX9nmQ6BeQkLcGk1HiyzDWAtYE5oUR5dX1YHbP3+GWL2xMes+ocgaywAFHZVum9o7pHvzRLr5ybwTap6rsFH/q+P15TIczAf24DXzdZAmnnhtyVa5I+LX372fQa5/+p64888TrQDesMbPhV0CmdeHHsFxvurpUR4rbGcMJTwOA=
