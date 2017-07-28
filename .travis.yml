@@ -14,8 +14,10 @@ install:
   - pip install pymongo
   - pip install pygr
   - pip install coveralls
+  - pip install neo4j-driver==1.0.2
 services:
   - mongodb
+  - neo4j
 script: 
 # command to run coveralls (test coverage) and run tests
 #  - coverage run --source=flaskr flaskr/test_flaskr.py
