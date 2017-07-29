@@ -21,6 +21,8 @@ services:
   - mongodb
   - neo4j
 script: 
+# allow time for neo4j to start
+  - sleep 30 
 # command to run coveralls (test coverage) and run tests
 #  - coverage run --source=flaskr flaskr/test_flaskr.py
   - coverage run --source=flaskr -m unittest discover 
