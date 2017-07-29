@@ -7,11 +7,6 @@ import unittest
 
 from neo4j.v1 import GraphDatabase, basic_auth
 
-# TODO LMTW set password
-# encrypted set to false due to Travis SSL bug Jul17 - https://github.com/neo4j/neo4j/issues/9233#issuecomment-300943889
-#driver = GraphDatabase.driver("bolt://localhost:7687", auth=basic_auth("neo4j", "lucy"), encrypted=False)
-driver = GraphDatabase.driver("bolt://localhost:7474", auth=basic_auth("neo4j", "neo4j"), encrypted=False)
-
 class Neo4jTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -22,6 +17,11 @@ class Neo4jTestCase(unittest.TestCase):
 
 
     def test_data(self):
+
+        # TODO LMTW set password
+        # encrypted set to false due to Travis SSL bug Jul17 - https://github.com/neo4j/neo4j/issues/9233#issuecomment-300943889
+        #driver = GraphDatabase.driver("bolt://localhost:7687", auth=basic_auth("neo4j", "lucy"), encrypted=False)
+        driver = GraphDatabase.driver("bolt://localhost:7474", auth=basic_auth("neo4j", "neo4j"), encrypted=False)
 
         session = driver.session()
         session.run("CREATE (a:Person {name: {name}, title: {title}})",
