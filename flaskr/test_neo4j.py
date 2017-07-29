@@ -8,8 +8,9 @@ import unittest
 from neo4j.v1 import GraphDatabase, basic_auth
 
 # TODO LMTW set password
-#driver = GraphDatabase.driver("bolt://localhost:7687", auth=basic_auth("neo4j", "lucy"))
-driver = GraphDatabase.driver("bolt://localhost:7474", auth=basic_auth("neo4j", "neo4j"))
+# encrypted set to false due to Travis SSL bug Jul17 - https://github.com/neo4j/neo4j/issues/9233#issuecomment-300943889
+#driver = GraphDatabase.driver("bolt://localhost:7687", auth=basic_auth("neo4j", "lucy"), encrypted=False)
+driver = GraphDatabase.driver("bolt://localhost:7474", auth=basic_auth("neo4j", "neo4j"), encrypted=False)
 
 class Neo4jTestCase(unittest.TestCase):
 
@@ -33,6 +34,10 @@ class Neo4jTestCase(unittest.TestCase):
         assert record["title"] == "Professor"
         assert record["name"] == "Crick"
 
+        # clean up
+        session.run("MATCH (a:Person) WHERE a.name = {name} "
+                    "DETACH DELETE a",
+                    {"name": "Crick"})
         session.close()
 
 if __name__ == '__main__':
