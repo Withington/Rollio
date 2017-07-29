@@ -19,7 +19,7 @@ install:
   - pip install neo4j-driver
 services:
   - mongodb
-  - neo4j:3.0.9
+  - neo4j
 script: 
 # command to run coveralls (test coverage) and run tests
 #  - coverage run --source=flaskr flaskr/test_flaskr.py
