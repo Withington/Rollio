@@ -16,43 +16,17 @@ class Neo4jTestCase(unittest.TestCase):
     def tearDown(self):
         pass
 
-
-    def test_data(self):
-
-        local = False
-        if local:
-            password = "lucy"
-        else:
-            password = "neo4j"
-        # encrypted set to false due to Travis SSL bug Jul17 - https://github.com/neo4j/neo4j/issues/9233#issuecomment-300943889
-        driver = GraphDatabase.driver("bolt://localhost:7687", auth=basic_auth("neo4j", password), encrypted=False)
-
-        session = driver.session()
-        session.run("CREATE (a:Person {name: {name}, title: {title}})",
-                    {"name": "Crick", "title": "Professor"})
-        result = session.run("MATCH (a:Person) WHERE a.name = {name} "
-                            "RETURN a.name AS name, a.title AS title",
-                            {"name": "Crick"})
-        for record in result:
-            print("%s %s" % (record["title"], record["name"]))
-        assert record["title"] == "Professor"
-        assert record["name"] == "Crick"
-
-        # clean up
-        session.run("MATCH (a:Person) WHERE a.name = {name} "
-                    "DETACH DELETE a",
-                    {"name": "Crick"})
-        session.close()
-
-
-    # From https://github.com/robinedwards/django-neomodel
+        
     def test_neo4j(self):
+        # Password handling taken from https://github.com/robinedwards/django-neomodel
         
         local = False
         if local:
             password = "lucy"
         else:
             password = "neo4j"
+        
+        # encrypted set to false due to Travis SSL bug Jul17 - https://github.com/neo4j/neo4j/issues/9233#issuecomment-300943889
         driver = GraphDatabase.driver("bolt://localhost:7687", auth=basic_auth("neo4j", password), encrypted=False)
         session = driver.session()
 
@@ -68,6 +42,23 @@ class Neo4jTestCase(unittest.TestCase):
                 print("New database with no password set, setting password to 'test'")
             else:
                 raise ce
+
+            # run the test
+            session.run("CREATE (a:Person {name: {name}, title: {title}})",
+                        {"name": "Crick", "title": "Professor"})
+            result = session.run("MATCH (a:Person) WHERE a.name = {name} "
+                                "RETURN a.name AS name, a.title AS title",
+                                {"name": "Crick"})
+            for record in result:
+                print("%s %s" % (record["title"], record["name"]))
+            assert record["title"] == "Professor"
+            assert record["name"] == "Crick"
+
+            # clean up
+            session.run("MATCH (a:Person) WHERE a.name = {name} "
+                        "DETACH DELETE a",
+                        {"name": "Crick"})
+            session.close()
 
 if __name__ == '__main__':
     unittest.main()
