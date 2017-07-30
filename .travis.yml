@@ -5,9 +5,6 @@ dist: trusty
 sudo: required
 git:
   submodules: false
-env:
-  # Working Neo4j Travis set up taken from https://github.com/robinedwards/neomodel
-#  - NEO4J_VERSION="3.2.1"
 before_install:
   - git submodule update --init --recursive
 install: 
@@ -25,8 +22,6 @@ services:
   - neo4j 
   - sleep 10
 script: 
-# allow time for neo4j to start
-#  - sleep 120 
 # command to run coveralls (test coverage) and run tests
 #  - coverage run --source=flaskr flaskr/test_flaskr.py
   - coverage run --source=flaskr -m unittest discover 
