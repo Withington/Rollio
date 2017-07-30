@@ -35,9 +35,9 @@ script:
 #  - sleep 120 
 # command to run coveralls (test coverage) and run tests
 #  - coverage run --source=flaskr flaskr/test_flaskr.py
-#  - coverage run --source=flaskr -m unittest discover 
+  - coverage run --source=flaskr -m unittest discover 
 #  - python -m unittest discover
-  - python flaskr/test_neo4j.py
+#  - python flaskr/test_neo4j.py
 after_success:
   coveralls
 
