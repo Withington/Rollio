@@ -7,15 +7,9 @@ git:
   submodules: false
 env:
   # Working Neo4j Travis set up taken from https://github.com/robinedwards/neomodel
-  - NEO4J_VERSION="3.2.1"
+#  - NEO4J_VERSION="3.2.1"
 before_install:
   - git submodule update --init --recursive
-  - sudo apt-get update && sudo apt-get install oracle-java8-installer
-  - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-  - wget dist.neo4j.org/neo4j-community-$NEO4J_VERSION-unix.tar.gz
-  - tar -xzf neo4j-community-$NEO4J_VERSION-unix.tar.gz
-  - neo4j-community-$NEO4J_VERSION/bin/neo4j start
-  - sleep 10
 install: 
   - cd varnorm
   - python setup.py install
@@ -28,8 +22,8 @@ install:
   - pip install neo4j-driver
 services:
   - mongodb
-#  - neo4j Not working so trying a different way, above.
-
+  - neo4j 
+  - sleep 10
 script: 
 # allow time for neo4j to start
 #  - sleep 120 
