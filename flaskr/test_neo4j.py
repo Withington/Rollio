@@ -22,8 +22,7 @@ class Neo4jTestCase(unittest.TestCase):
         local = False
         password = "lucy" if local else "neo4j"
         
-        # encrypted set to false due to Travis SSL bug Jul17 - https://github.com/neo4j/neo4j/issues/9233#issuecomment-300943889
-        driver = GraphDatabase.driver("bolt://localhost:7687", auth=basic_auth("neo4j", password), encrypted=False)
+        driver = GraphDatabase.driver("bolt://localhost:7687", auth=basic_auth("neo4j", password))
         session = driver.session()
 
         # Password handling taken from https://github.com/robinedwards/django-neomodel
