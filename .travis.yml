@@ -20,7 +20,6 @@ install:
 services:
   - mongodb
   - neo4j 
-  - sleep 10
 script: 
 # command to run coveralls (test coverage) and run tests
 #  - coverage run --source=flaskr flaskr/test_flaskr.py
