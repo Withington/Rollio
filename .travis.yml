@@ -17,7 +17,6 @@ before_install:
   - neo4j-community-$NEO4J_VERSION/bin/neo4j start
   - sleep 10
 install: 
-  - cd ..
   - cd varnorm
   - python setup.py install
   - cd ..
@@ -36,9 +35,9 @@ script:
 #  - sleep 120 
 # command to run coveralls (test coverage) and run tests
 #  - coverage run --source=flaskr flaskr/test_flaskr.py
-  - coverage run --source=flaskr -m unittest discover 
+#  - coverage run --source=flaskr -m unittest discover 
 #  - python -m unittest discover
-#  - python flaskr/test_flaskr.py
+  - python flaskr/test_neo4j.py
 after_success:
   coveralls
 
