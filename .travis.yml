@@ -19,10 +19,20 @@ install:
   - pip install neo4j-driver
 services:
   - mongodb
-  - neo4j
+#  - neo4j
+# Working Neo4j Travis set up taken from https://github.com/robinedwards/neomodel
+env:
+  - NEO4J_VERSION="3.2.1"
+before_install:
+  - sudo apt-get update && sudo apt-get install oracle-java8-installer
+  - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+  - wget dist.neo4j.org/neo4j-community-$NEO4J_VERSION-unix.tar.gz
+  - tar -xzf neo4j-community-$NEO4J_VERSION-unix.tar.gz
+  - neo4j-community-$NEO4J_VERSION/bin/neo4j start
+  - sleep 10
 script: 
 # allow time for neo4j to start
-  - sleep 120 
+#  - sleep 120 
 # command to run coveralls (test coverage) and run tests
 #  - coverage run --source=flaskr flaskr/test_flaskr.py
   - coverage run --source=flaskr -m unittest discover 
